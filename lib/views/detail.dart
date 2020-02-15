@@ -1,5 +1,6 @@
 import 'package:fltr_graziamaroc/model/article.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Detail extends StatefulWidget {
   @override
@@ -38,13 +39,13 @@ class _Detail extends State<Detail> {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-                expandedHeight: 250.0,
+                expandedHeight: ScreenUtil().setHeight(500.0),
                 floating: false,
                 pinned: false,
                 backgroundColor: Color(0xFF212121),
                 flexibleSpace: FlexibleSpaceBar(
                   centerTitle: true,
-                  titlePadding: EdgeInsets.symmetric(horizontal: 85.0),
+                  // titlePadding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(100.0)),
                   background: Stack(
                     children: <Widget>[
                       Container(
@@ -71,18 +72,20 @@ class _Detail extends State<Detail> {
                           ),
                         ),
                         child: Container(
-                          padding: EdgeInsets.all(10.0),
+                          padding: EdgeInsets.all(ScreenUtil().setWidth(20.0)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: <Widget>[
                               Container(
-                                margin: EdgeInsets.only(left: 10.0, top: 5.0),
+                                margin: EdgeInsets.only(
+                                    left: ScreenUtil().setWidth(20.0),
+                                    top: ScreenUtil().setWidth(10.0)),
                                 child: Text(
                                   'Un amour de montre by Fendi',
                                   textAlign: TextAlign.start,
                                   style: TextStyle(
-                                      fontSize: 23.0,
+                                      fontSize: ScreenUtil().setWidth(46.0),
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white),
                                 ),
@@ -104,19 +107,21 @@ class _Detail extends State<Detail> {
           body: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Container(
-              // margin: EdgeInsets.all(10.0),
+              // margin: EdgeInsets.all(ScreenUtil().setWidth(20.0)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(left: 10.0, top: 10.0),
+                    margin: EdgeInsets.only(
+                        left: ScreenUtil().setWidth(20.0),
+                        top: ScreenUtil().setWidth(20.0)),
                     child: Row(
                       children: <Widget>[
                         Text(
                           '1 day ago | ',
                           textAlign: TextAlign.start,
                           style: TextStyle(
-                            fontSize: 15.0,
+                            fontSize: ScreenUtil().setWidth(30.0),
                             fontWeight: FontWeight.bold,
                             color: Colors.black45,
                           ),
@@ -125,7 +130,7 @@ class _Detail extends State<Detail> {
                           'NEWS MODE',
                           textAlign: TextAlign.start,
                           style: TextStyle(
-                              fontSize: 15.0,
+                              fontSize: ScreenUtil().setWidth(30.0),
                               fontWeight: FontWeight.bold,
                               color: Colors.redAccent),
                         ),
@@ -133,34 +138,37 @@ class _Detail extends State<Detail> {
                     ),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: ScreenUtil().setHeight(20.0),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 10.0, bottom: 5.0),
+                    margin: EdgeInsets.only(
+                        left: ScreenUtil().setWidth(20.0), bottom: ScreenUtil().setWidth(10.0)),
                     child: Text(
                         'Laborum eu quis nisi eiusmod quis qui sint veniam occaecat. Lorem magna ullamco duis aliquip ipsum. Sit voluptate eu Lorem elit magna non esse laboris. Mollit exercitation culpa cupidatat laborum aliqua. Eu ullamco veniam sint ipsum ex labore mollit velit dolore esse. In nisi dolore occaecat laborum esse est anim eu. Deserunt voluptate exercitation commodo ad eiusmod quis nisi qui velit Lorem est veniam eu velit.'),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: ScreenUtil().setHeight(20.0),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 10.0, bottom: 5.0),
+                    margin: EdgeInsets.only(
+                        left: ScreenUtil().setWidth(20.0), bottom: ScreenUtil().setWidth(10.0)),
                     child: Text(
                         'Laborum eu quis nisi eiusmod quis qui sint veniam occaecat. Lorem magna ullamco duis aliquip ipsum. Sit voluptate eu Lorem elit magna non esse laboris. Mollit exercitation culpa cupidatat laborum aliqua. Eu ullamco veniam sint ipsum ex labore mollit velit dolore esse. In nisi dolore occaecat laborum esse est anim eu. Deserunt voluptate exercitation commodo ad eiusmod quis nisi qui velit Lorem est veniam eu velit.'),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: ScreenUtil().setHeight(20.0),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 10.0, bottom: 5.0),
+                    margin: EdgeInsets.only(
+                        left: ScreenUtil().setWidth(20.0), bottom: ScreenUtil().setWidth(10.0)),
                     child: Text(
                         'Laborum eu quis nisi eiusmod quis qui sint veniam occaecat. Lorem magna ullamco duis aliquip ipsum. Sit voluptate eu Lorem elit magna non esse laboris. Mollit exercitation culpa cupidatat laborum aliqua. Eu ullamco veniam sint ipsum ex labore mollit velit dolore esse. In nisi dolore occaecat laborum esse est anim eu. Deserunt voluptate exercitation commodo ad eiusmod quis nisi qui velit Lorem est veniam eu velit.'),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: ScreenUtil().setHeight(20.0),
                   ),
                   Container(
-                    height: 15.0,
+                    height: ScreenUtil().setHeight(30.0),
                     color: Colors.black12.withAlpha(8),
                   ),
                   MoreArticles(_listArticles)
@@ -175,7 +183,7 @@ class _Detail extends State<Detail> {
 Widget MoreArticles(List<Article> _listArticles) {
   return Container(
     color: Colors.white,
-    padding: EdgeInsets.all(10.0),
+    padding: EdgeInsets.all(ScreenUtil().setWidth(20.0)),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -183,7 +191,7 @@ Widget MoreArticles(List<Article> _listArticles) {
           child: Text(
             'Learn More',
             style: TextStyle(
-              fontSize: 20.0,
+              fontSize: ScreenUtil().setWidth(40.0),
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -209,7 +217,7 @@ Widget MoreArticles(List<Article> _listArticles) {
                                 Text(
                                   _listArticles[index].title,
                                   style: TextStyle(
-                                    fontSize: 20.0,
+                                    fontSize: ScreenUtil().setWidth(40.0),
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -218,7 +226,7 @@ Widget MoreArticles(List<Article> _listArticles) {
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
-                                    fontSize: 15.0,
+                                    fontSize: ScreenUtil().setWidth(30.0),
                                     fontWeight: FontWeight.w300,
                                   ),
                                 )
@@ -239,7 +247,7 @@ Widget MoreArticles(List<Article> _listArticles) {
                           Text(
                             '4 days ago . 8 min read ',
                             style: TextStyle(
-                              fontSize: 13.0,
+                              fontSize: ScreenUtil().setWidth(26.0),
                               fontWeight: FontWeight.w300,
                             ),
                           ),

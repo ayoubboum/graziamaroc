@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:fltr_graziamaroc/model/article.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Alalune extends StatefulWidget {
   @override
@@ -18,19 +19,6 @@ class _AlaluneState extends State<Alalune> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer.periodic(Duration(seconds: 2), (Timer timer) {
-      if (_currentPage < 2) {
-        _currentPage++;
-      } else {
-        _currentPage = 0;
-      }
-
-      _pageController.animateToPage(
-        _currentPage,
-        duration: Duration(milliseconds: 300),
-        curve: Curves.easeIn,
-      );
-    });
     _listArticles = [
       Article('Un amour de montre by Fendi', 'assets/imgs/slide_one.jpg'),
       Article('Escapade romantique à Mazagan', 'assets/imgs/slide_two.jpg'),
@@ -45,6 +33,26 @@ class _AlaluneState extends State<Alalune> {
       Article('La robe dont tout le monde parle encore…',
           'assets/imgs/slide_three.jpg'),
     ];
+    Timer.periodic(Duration(seconds: 2), (Timer timer) {
+      if (_currentPage < _listArticles.length) {
+        _currentPage++;
+      } else {
+        _currentPage = 0;
+      }
+      if (_pageController.hasClients)
+        _pageController.animateToPage(
+          _currentPage,
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeIn,
+        );
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _pageController.dispose();
   }
 
   @override
@@ -69,7 +77,7 @@ Widget alalune(BuildContext context, List<Article> _listArticles,
       Navigator.pushNamed(context, '/detail');
     },
     child: Container(
-      height: 250.0,
+      height: ScreenUtil().setWidth(500.0),
       child: PageView.builder(
         controller: _pageController,
         itemCount: _listArticles.length,
@@ -85,7 +93,7 @@ Widget alalune(BuildContext context, List<Article> _listArticles,
               width: MediaQuery.of(context).size.width,
             ),
             Container(
-              height: 250.0,
+              height: ScreenUtil().setWidth(500.0),
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.black,
@@ -109,7 +117,7 @@ Widget alalune(BuildContext context, List<Article> _listArticles,
                     'NEWS MODE',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 18.0,
+                      fontSize: ScreenUtil().setWidth(36.0),
                       fontWeight: FontWeight.w500,
                       color: Colors.white,
                     ),
@@ -118,7 +126,7 @@ Widget alalune(BuildContext context, List<Article> _listArticles,
                     _listArticles[index].title,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 23.0,
+                      fontSize: ScreenUtil().setWidth(46.0),
                       fontWeight: FontWeight.w500,
                       color: Colors.white,
                     ),
@@ -143,7 +151,11 @@ Widget articles(BuildContext context, List<Article> _listArticles) {
         Navigator.pushNamed(context, '/detail');
       },
       child: Container(
-        margin: EdgeInsets.only(top: 8.0, right: 8.0, left: 8.0, bottom: 4.0),
+        margin: EdgeInsets.only(
+            top: ScreenUtil().setWidth(16.0),
+            right: ScreenUtil().setWidth(16.0),
+            left: ScreenUtil().setWidth(16.0),
+            bottom: 4.0),
         // padding: EdgeInsets.all(5.0),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -151,7 +163,7 @@ Widget articles(BuildContext context, List<Article> _listArticles) {
             BoxShadow(
               color: Colors.black54.withOpacity(0.05),
               spreadRadius: 1.5,
-              blurRadius: 8.0,
+              blurRadius: ScreenUtil().setWidth(16.0),
               offset: Offset(0.0, 0.0),
             ),
           ],
@@ -173,7 +185,10 @@ Widget articles(BuildContext context, List<Article> _listArticles) {
             Expanded(
               flex: 4,
               child: Container(
-                padding: EdgeInsets.only(left: 5.0, bottom: 5.0, top: 5.0),
+                padding: EdgeInsets.only(
+                    left: ScreenUtil().setWidth(10.0),
+                    bottom: ScreenUtil().setWidth(10.0),
+                    top: ScreenUtil().setWidth(10.0)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -183,7 +198,7 @@ Widget articles(BuildContext context, List<Article> _listArticles) {
                         _listArticles[index].title,
                         style: TextStyle(
                             color: Color(0xFFF6C232),
-                            fontSize: 15.0,
+                            fontSize: ScreenUtil().setWidth(30.0),
                             fontWeight: FontWeight.bold),
                       ),
                     ),
