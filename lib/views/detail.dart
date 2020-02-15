@@ -1,3 +1,4 @@
+import 'package:fltr_graziamaroc/model/article.dart';
 import 'package:flutter/material.dart';
 
 class Detail extends StatefulWidget {
@@ -6,6 +7,28 @@ class Detail extends StatefulWidget {
 }
 
 class _Detail extends State<Detail> {
+  List<Article> _listArticles;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _listArticles = [
+      Article('Un amour de montre by Fendi', 'assets/imgs/slide_one.jpg'),
+      Article('Escapade romantique à Mazagan', 'assets/imgs/slide_two.jpg'),
+      Article('La robe dont tout le monde parle encore…',
+          'assets/imgs/slide_three.jpg'),
+      Article('Un amour de montre by Fendi', 'assets/imgs/slide_one.jpg'),
+      Article('Escapade romantique à Mazagan', 'assets/imgs/slide_two.jpg'),
+      Article('La robe dont tout le monde parle encore…',
+          'assets/imgs/slide_three.jpg'),
+      Article('Un amour de montre by Fendi', 'assets/imgs/slide_one.jpg'),
+      Article('Escapade romantique à Mazagan', 'assets/imgs/slide_two.jpg'),
+      Article('La robe dont tout le monde parle encore…',
+          'assets/imgs/slide_three.jpg'),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -140,7 +163,7 @@ class _Detail extends State<Detail> {
                     height: 15.0,
                     color: Colors.black12.withAlpha(8),
                   ),
-                  MoreArticles()
+                  MoreArticles(_listArticles)
                 ],
               ),
             ),
@@ -149,7 +172,7 @@ class _Detail extends State<Detail> {
   }
 }
 
-Widget MoreArticles() {
+Widget MoreArticles(List<Article> _listArticles) {
   return Container(
     color: Colors.white,
     padding: EdgeInsets.all(10.0),
@@ -170,7 +193,7 @@ Widget MoreArticles() {
                   // height: 12.0,
                   thickness: 1.0,
                 ),
-            itemCount: 4,
+            itemCount: _listArticles.length,
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
             physics: NeverScrollableScrollPhysics(),
@@ -184,7 +207,7 @@ Widget MoreArticles() {
                             child: Column(
                               children: <Widget>[
                                 Text(
-                                  'Un amour de montre by Fendi',
+                                  _listArticles[index].title,
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.w500,
@@ -204,7 +227,9 @@ Widget MoreArticles() {
                           ),
                           Expanded(
                             flex: 2,
-                            child: Image.asset('assets/imgs/slide_one.jpg'),
+                            child: Image.asset(
+                              _listArticles[index].image,
+                            ),
                           )
                         ],
                       ),
